@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.xushuzhan.recyclerviewtest.R;
 
@@ -105,7 +106,6 @@ public class MyRefreshRecyclerView extends RecyclerView {
         loadTxt = new TextView(getContext());
         footerLayout.addView(loadTxt);
         footerView = footerLayout;
-        footerView.setVisibility(GONE);
         myRefreshAdapter = new MyRefreshAdapter(adapter);
         myRefreshAdapter.addFooterView(footerView);
         super.setAdapter(myRefreshAdapter);
@@ -121,6 +121,7 @@ public class MyRefreshRecyclerView extends RecyclerView {
             circleProgressView.setVisibility(GONE);
         } else {
             footerView.setVisibility(GONE);
+            Toast.makeText(getContext(), "没加载完", Toast.LENGTH_SHORT).show();
         }
         isLoadMore = false;
     }
